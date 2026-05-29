@@ -1,0 +1,6 @@
+{
+  "name": "PushMasterr",
+  "description": "PushMasterr is the ultimate high-performance Push Notification SaaS platform featuring fully-interactive live device simulation, self-hosted perpetual licenses, subscriber segment management, anti-churn timezone sleep-guard, real-time analytics, and secure Razorpay payment integrations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

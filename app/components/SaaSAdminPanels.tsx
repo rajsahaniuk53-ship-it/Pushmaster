@@ -213,14 +213,14 @@ export function CustomerAdminPanel({
       )}
 
       {/* Add Website Section */}
-      <form onSubmit={handleAddSite} className={`p-4 rounded-xl border mb-6 ${isDarkMode ? "bg-[#0D0F14]/70 border-white/5" : "bg-slate-50 border-slate-100"}`}>
-        <h3 className={`text-xs uppercase font-extrabold tracking-wider mb-3 flex items-center gap-1.5 ${isDarkMode ? "text-slate-300" : "text-slate-700"}`}>
-          <PlusCircle className="w-4 h-4 text-indigo-500" />
-          Connect New Website or App
+      <form onSubmit={handleAddSite} className={`p-5 rounded-xl border-2 mb-6 transition-all duration-300 ${isDarkMode ? "bg-[#0D0F14]/90 border-emerald-500/30 shadow-lg shadow-emerald-950/20" : "bg-emerald-50/50 border-emerald-200/80 shadow-md shadow-emerald-500/5"}`}>
+        <h3 className={`text-xs uppercase font-extrabold tracking-wider mb-3 flex items-center gap-1.5 ${isDarkMode ? "text-emerald-400" : "text-emerald-800"}`}>
+          <PlusCircle className="w-4 h-4 text-emerald-500 animate-pulse" />
+          Connect New Website or Custom Domain (Secure App Target)
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className={`block text-[10px] font-bold uppercase tracking-widest mb-1.5 ${isDarkMode ? "text-slate-400" : "text-slate-700 font-extrabold"}`}>
+            <label className={`block text-[10px] font-bold uppercase tracking-widest mb-1.5 ${isDarkMode ? "text-emerald-400/80" : "text-emerald-900 font-extrabold"}`}>
               App/Website Name
             </label>
             <input
@@ -228,16 +228,16 @@ export function CustomerAdminPanel({
               value={newSiteName}
               onChange={(e) => setNewSiteName(e.target.value)}
               placeholder="e.g. My Grocery Store, Tech Blog"
-              className={`w-full text-xs font-semibold rounded-lg p-2.5 focus:outline-none focus:ring-1 ${
+              className={`w-full text-xs font-semibold rounded-lg p-2.5 focus:outline-none focus:ring-2 ${
                 isDarkMode 
-                  ? "bg-[#161920] border-white/5 focus:border-indigo-500 text-white focus:ring-indigo-500/30" 
-                  : "bg-white border-slate-200 text-slate-900 focus:border-indigo-500 focus:ring-indigo-500/20"
+                  ? "bg-[#161920] border-emerald-500/30 focus:border-emerald-400 text-white focus:ring-emerald-400/30 placeholder-emerald-800" 
+                  : "bg-white border-emerald-300/80 text-emerald-950 focus:border-emerald-600 focus:ring-emerald-600/20 placeholder-slate-400 font-semibold"
               }`}
               required
             />
           </div>
           <div>
-            <label className={`block text-[10px] font-bold uppercase tracking-widest mb-1.5 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>
+            <label className={`block text-[10px] font-bold uppercase tracking-widest mb-1.5 ${isDarkMode ? "text-emerald-400/80" : "text-emerald-900 font-extrabold"}`}>
               Website URL / Deep Link Node
             </label>
             <input
@@ -245,10 +245,10 @@ export function CustomerAdminPanel({
               value={newSiteUrl}
               onChange={(e) => setNewSiteUrl(e.target.value)}
               placeholder="e.g. clientbazaar.com"
-              className={`w-full text-xs font-semibold rounded-lg p-2.5 focus:outline-none focus:ring-1 ${
+              className={`w-full text-xs font-semibold rounded-lg p-2.5 focus:outline-none focus:ring-2 ${
                 isDarkMode 
-                  ? "bg-[#161920] border-white/5 focus:border-indigo-500 text-white focus:ring-indigo-500/30" 
-                  : "bg-white border-slate-200 text-slate-900 focus:border-indigo-500 focus:ring-indigo-500/20"
+                  ? "bg-[#161920] border-emerald-500/30 focus:border-emerald-400 text-white focus:ring-emerald-400/30 placeholder-emerald-800" 
+                  : "bg-white border-emerald-300/80 text-emerald-950 focus:border-emerald-600 focus:ring-emerald-600/20 placeholder-slate-400 font-semibold"
               }`}
               required
             />
@@ -258,10 +258,10 @@ export function CustomerAdminPanel({
           <button
             type="submit"
             onClick={() => handleButtonClickEffect("btn-add-site")}
-            className={`text-xs font-semibold py-2 px-4 rounded-lg flex items-center gap-1.5 cursor-pointer shadow-sm transition-all ${
+            className={`text-xs font-black py-2.5 px-5 rounded-lg flex items-center gap-1.5 cursor-pointer shadow-md transition-all ${
               lastClickedButtonId === "btn-add-site"
-                ? "bg-amber-500 text-slate-950 scale-95 border border-amber-400 glow font-extrabold"
-                : "bg-indigo-600 hover:bg-indigo-500 text-white"
+                ? "bg-amber-500 text-slate-950 scale-95 border border-amber-400 shadow-md font-extrabold"
+                : "bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-600/20"
             }`}
           >
             <Plus className="w-3.5 h-3.5" />
@@ -290,11 +290,11 @@ export function CustomerAdminPanel({
 
           <button
             onClick={() => handleButtonClickEffect("connect-tpl-domain", () => handleQuickConnectTemplate("domain"))}
-            className="flex flex-col items-center justify-center p-2.5 rounded-xl border border-dashed border-indigo-500/20 bg-white dark:bg-[#161920] hover:bg-indigo-500/5 transition-all text-center cursor-pointer"
+            className="flex flex-col items-center justify-center p-2.5 rounded-xl border-2 border-dashed border-emerald-500/40 bg-emerald-500/5 dark:bg-[#161920] hover:bg-emerald-500/10 hover:border-emerald-500/70 transition-all text-center cursor-pointer scale-102"
           >
-            <Globe className="w-4 h-4 text-sky-500" />
-            <span className="text-[9px] font-bold mt-1 dark:text-slate-200">Custom Domain</span>
-            <span className="text-[8px] text-emerald-500 block">1-Click Hook</span>
+            <Globe className="w-4 h-4 text-emerald-500" />
+            <span className="text-[9px] font-black mt-1 text-emerald-600 dark:text-emerald-400">Custom Domain</span>
+            <span className="text-[8px] text-emerald-500 block font-black">1-Click Hook</span>
           </button>
 
           <button
@@ -354,8 +354,10 @@ export function CustomerAdminPanel({
           currentWorkspaceSites.map(site => (
           <div 
             key={site.id} 
-            className={`p-4 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all ${
-              isDarkMode ? "bg-[#0D0F14]/50 border-white/5 hover:bg-[#0D0F14]/80" : "bg-slate-50 border-slate-200/50 hover:bg-slate-100/40 shadow-xs"
+            className={`p-4 rounded-xl border-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all ${
+              isDarkMode 
+                ? "bg-[#0D0F14]/50 border-emerald-500/10 hover:border-emerald-500/40 hover:bg-[#0D0F14]/80" 
+                : "bg-emerald-50/10 border-emerald-100 hover:border-emerald-250 hover:bg-emerald-50/30 shadow-xs"
             }`}
           >
             <div className="space-y-1">
@@ -366,15 +368,15 @@ export function CustomerAdminPanel({
                   SDK Connected
                 </span>
               </div>
-              <p className="text-[11px] font-mono text-slate-500 flex items-center gap-1">
-                <Globe className="w-3 h-3 text-slate-400" />
+              <p className="text-[11px] font-mono text-emerald-650 dark:text-emerald-400 flex items-center gap-1 font-bold">
+                <Globe className="w-3 h-3 text-emerald-500" />
                 {site.url}
               </p>
               <p className="text-[10px] text-slate-400">
-                Targeted push counts: <span className="font-semibold text-indigo-500/80">{site.subscribedCount} sent</span>
+                Targeted push counts: <span className="font-semibold text-emerald-500">{site.subscribedCount} sent</span>
               </p>
               <div className="text-[10px] font-mono text-slate-400 truncate max-w-[280px]">
-                App ID: <span className="text-slate-400/80 select-all">{site.apiKey}</span>
+                App ID: <span className="text-emerald-500/70 select-all font-semibold font-mono">{site.apiKey}</span>
               </div>
             </div>
 

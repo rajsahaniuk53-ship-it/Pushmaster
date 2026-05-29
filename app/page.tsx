@@ -761,7 +761,7 @@ class NotificationController extends Controller
             <h1 className={`text-lg md:text-xl font-extrabold tracking-tight flex items-center gap-2 justify-center sm:justify-start ${
               isDarkMode ? "text-white" : "text-slate-900"
             }`}>
-              PushMasterr.com ⚡
+              LaraPush ⚡
               <span className={`text-[10px] font-mono uppercase font-bold tracking-widest px-2.5 py-0.5 rounded border animate-bounce ${
                 isDarkMode ? "bg-indigo-500/10 text-indigo-400 border-indigo-500/30" : "bg-indigo-50 text-indigo-700 border-indigo-200/80"
               }`}>
@@ -1053,71 +1053,59 @@ class NotificationController extends Controller
             </div>
           </div>
 
-          {/* CENTER: Central Workspace Active Component (6 Columns) */}
-          <div className="lg:col-span-6 space-y-8">
+          {/* CENTER: Central Workspace Active Component (6 or 9 Columns depending on right-sidebar visibility) */}
+          <div className={`${
+            (activeTab === "showcase" || activeTab === "pricing" || activeTab === "terms" || activeTab === "portal" || activeTab === "guide")
+              ? "lg:col-span-9" 
+              : "lg:col-span-6"
+          } space-y-8`}>
 
-            {/* TAB PANEL 0: LIVE REVOLUTIONARY PRODUCT SHOWCASE (INSPIRED BY ONESIGNAL & LARAPUSH) */}
+            {/* TAB PANEL 0: LIVE REVOLUTIONARY PRODUCT SHOWCASE */}
             {activeTab === "showcase" && (
               <motion.div 
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="space-y-10 animate-fade-in text-slate-800"
+                className="space-y-10 animate-fade-in"
               >
-                {/* 1. HERO RECOGNITION G2 BADGES ROW */}
-                <div className={`p-6 rounded-2xl border text-center space-y-4 ${
-                  isDarkMode ? "bg-[#161920] border-white/5 text-white" : "bg-white border-slate-200/80 shadow-sm"
+                {/* LARAPUSH STYLE HERO BANNER */}
+                <div className={`p-8 md:p-12 rounded-3xl border text-center space-y-6 relative overflow-hidden ${
+                  isDarkMode ? "bg-[#11141D] border-white/5 text-slate-200" : "bg-gradient-to-b from-indigo-50 to-white border-slate-200/80 shadow-sm text-slate-800"
                 }`}>
-                  <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-600 font-extrabold text-[11px] px-3.5 py-1.5 rounded-full uppercase tracking-wider border border-amber-500/20">
-                    <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500 animate-spin-slow" />
-                    Rated 4.7/5 Stars on G2 Crowd Authentication
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[350px] h-[150px] bg-indigo-500/10 blur-[80px] rounded-full pointer-events-none" />
+                  
+                  <div className="inline-flex items-center gap-2 bg-indigo-500/10 text-indigo-400 font-mono text-[10px] px-3.5 py-1.5 rounded-full uppercase tracking-widest border border-indigo-500/20 mx-auto">
+                    🚀 Self-Hosted Web Push Platform
                   </div>
                   
-                  <h2 className={`text-2xl font-bold tracking-tight ${isDarkMode ? "text-white" : "text-slate-900"}`}>
-                    Real Results from Enterprise Teams
+                  <h2 className={`text-3xl md:text-5xl font-black tracking-tight max-w-3xl mx-auto leading-tight ${
+                    isDarkMode ? "text-white" : "text-slate-900"
+                  }`}>
+                    Pay <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-indigo-400 font-extrabold font-black">Once</span>. Own Your Data. No Monthly Subscriptions.
                   </h2>
-                  <p className="text-xs text-slate-500 max-w-xl mx-auto">
-                    From high-growth mobile startups to trusted global fintech networks, our deliverability infrastructure secures instant retention.
+                  
+                  <p className="text-sm md:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed font-sans">
+                    LaraPush helps you send <span className={isDarkMode ? "text-white font-semibold" : "text-slate-900 font-semibold"}>unlimited web push notifications</span> to <span className={isDarkMode ? "text-white font-semibold" : "text-slate-900 font-semibold"}>unlimited subscribers</span> using your own server background queue—backed directly by Google FCM nodes. Cut your monthly premium bills by up to 95%!
                   </p>
 
-                  {/* 4 Custom Illustrated Spring 2026 Badges */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-4">
-                    {/* Badge 1 */}
-                    <div className="p-4 bg-gradient-to-br from-amber-500/10 via-rose-500/5 to-transparent border border-amber-500/30 rounded-2xl flex flex-col items-center justify-center text-center space-y-1 relative overflow-hidden group hover:scale-105 transition-all">
-                      <div className="absolute top-0 right-0 w-8 h-8 bg-amber-500 rounded-full blur-xl opacity-35" />
-                      <span className={`text-[10px] font-extrabold uppercase font-mono tracking-wider ${isDarkMode ? "text-amber-400" : "text-amber-800"}`}>Spring 2026</span>
-                      <p className={`text-base font-black tracking-tight ${isDarkMode ? "text-white" : "text-slate-950 font-black"}`}>Leader</p>
-                      <div className="flex gap-0.5 text-amber-500 pt-1 justify-center">
-                        <Star className="w-2.5 h-2.5 fill-current" />
-                        <Star className="w-2.5 h-2.5 fill-current" />
-                        <Star className="w-2.5 h-2.5 fill-current" />
-                        <Star className="w-2.5 h-2.5 fill-current" />
-                        <Star className="w-2.5 h-2.5 fill-current" />
-                      </div>
-                    </div>
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                    <button
+                      onClick={() => setActiveTab("customer-admin")}
+                      className="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-extrabold px-8 py-3.5 rounded-xl transition-all shadow-lg shadow-indigo-600/35 cursor-pointer flex items-center justify-center gap-2 text-sm"
+                    >
+                      ✈️ Access Self-Hosted Admin Portal
+                    </button>
+                    <button
+                      onClick={() => setActiveTab("pricing")}
+                      className="w-full sm:w-auto bg-white/10 hover:bg-white/15 text-white font-bold px-8 py-3.5 rounded-xl border border-white/10 transition-all cursor-pointer flex items-center justify-center gap-2 text-sm"
+                    >
+                      💳 Get LaraPush Unlimited (Lifetime Match)
+                    </button>
+                  </div>
 
-                    {/* Badge 2 */}
-                    <div className="p-4 bg-gradient-to-br from-blue-500/10 via-sky-500/5 to-transparent border border-blue-500/30 rounded-2xl flex flex-col items-center justify-center text-center space-y-1 relative overflow-hidden group hover:scale-105 transition-all">
-                      <div className="absolute top-0 right-0 w-8 h-8 bg-blue-500 rounded-full blur-xl opacity-35" />
-                      <span className={`text-[10px] font-extrabold uppercase font-mono tracking-wider ${isDarkMode ? "text-blue-400" : "text-blue-800"}`}>Spring 2026</span>
-                      <p className={`text-xs font-black tracking-tight text-center ${isDarkMode ? "text-white" : "text-slate-950 font-black"}`}>Fastest Implementation</p>
-                      <span className={`text-[9px] font-semibold px-2 py-0.5 rounded-full mt-1 ${isDarkMode ? "bg-blue-500/15 text-blue-400" : "bg-blue-100 text-blue-900 font-extrabold"}`}>Mid-Market</span>
-                    </div>
-
-                    {/* Badge 3 */}
-                    <div className="p-4 bg-gradient-to-br from-yellow-500/10 via-amber-500/5 to-transparent border border-yellow-500/30 rounded-2xl flex flex-col items-center justify-center text-center space-y-1 relative overflow-hidden group hover:scale-105 transition-all">
-                      <div className="absolute top-0 right-0 w-8 h-8 bg-yellow-500 rounded-full blur-xl opacity-35" />
-                      <span className={`text-[10px] font-extrabold uppercase font-mono tracking-wider ${isDarkMode ? "text-amber-400" : "text-amber-800"}`}>Spring 2026</span>
-                      <p className={`text-base font-black tracking-tight ${isDarkMode ? "text-white" : "text-slate-950 font-black"}`}>Easiest To Use</p>
-                      <span className={`text-[9px] font-semibold px-2 py-0.5 rounded-full mt-1 ${isDarkMode ? "bg-yellow-500/15 text-yellow-400" : "bg-yellow-100 text-yellow-900 font-extrabold"}`}>Enterprise</span>
-                    </div>
-
-                    {/* Badge 4 */}
-                    <div className="p-4 bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-transparent border border-emerald-500/30 rounded-2xl flex flex-col items-center justify-center text-center space-y-1 relative overflow-hidden group hover:scale-105 transition-all">
-                      <div className="absolute top-0 right-0 w-8 h-8 bg-emerald-500 rounded-full blur-xl opacity-35" />
-                      <span className={`text-[10px] font-extrabold uppercase font-mono tracking-wider ${isDarkMode ? "text-emerald-400" : "text-emerald-800"}`}>Spring 2026</span>
-                      <p className={`text-base font-black tracking-tight ${isDarkMode ? "text-white" : "text-slate-950 font-black"}`}>Easiest Admin</p>
-                      <span className={`text-[9px] font-semibold px-2 py-0.5 rounded-full mt-1 ${isDarkMode ? "bg-emerald-500/15 text-emerald-400" : "bg-emerald-100 text-emerald-900 font-extrabold"}`}>Enterprise</span>
-                    </div>
+                  <div className="flex items-center justify-center gap-6 text-[11px] text-slate-400 font-mono pt-4 border-t border-white/5">
+                    <span className="flex items-center gap-1">✅ 1-Click OneSignal Importer</span>
+                    <span className="flex items-center gap-1">⚡ Instant Delivery</span>
+                    <span className="flex items-center gap-1">🔥 WordPress & JS Ready</span>
                   </div>
                 </div>
 
@@ -1171,9 +1159,9 @@ class NotificationController extends Controller
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {/* Channel 1: SMS/RCS simulator */}
-                    <div className={`p-6 rounded-3xl border flex flex-col justify-between space-y-4 relative overflow-hidden min-h-[460px] ${
+                    <div className={`p-6 rounded-3xl border flex flex-col justify-between space-y-4 relative overflow-hidden min-h-[560px] ${
                       isDarkMode ? "bg-[#161920] border-white/5 text-white" : "bg-gradient-to-b from-indigo-50 to-white border-slate-200/80 shadow-sm"
                     }`}>
                       <div>
@@ -1183,11 +1171,11 @@ class NotificationController extends Controller
                       </div>
 
                       {/* Phone enclosure mimicking the user photo */}
-                      <div className="bg-slate-900 p-4 rounded-3xl border-4 border-slate-800 h-[240px] flex flex-col justify-between text-xs my-2 relative text-white">
+                      <div className="bg-slate-900 p-4 rounded-3xl border-4 border-slate-800 h-[340px] flex flex-col justify-between text-xs my-2 relative text-white">
                         {/* Speaker notch */}
                         <div className="w-12 h-2.5 bg-slate-800 rounded-full mx-auto mb-2" />
                         
-                        <div className="flex-1 space-y-2 overflow-y-auto pr-1">
+                        <div className="flex-1 space-y-2 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-slate-800">
                           <div className="bg-slate-800 text-slate-200 p-2.5 rounded-xl rounded-tl-none max-w-[85%] text-[10px] leading-snug">
                             <span className="font-bold text-[8px] text-indigo-400 block mb-0.5">eShoppe Service</span>
                             New promotional items have arrived! What are you shopping for today?
@@ -1221,13 +1209,13 @@ class NotificationController extends Controller
                             onClick={() => setRcsStatus("tracked")}
                             className="bg-indigo-600/30 hover:bg-indigo-600 hover:text-white border border-indigo-500/30 text-indigo-400 font-semibold rounded p-1 text-[9px] text-center transition-all cursor-pointer"
                           >
-                            📱 PHONES
+                            📱 Phone
                           </button>
                           <button 
                             onClick={() => setRcsStatus("cancelled")}
                             className="bg-indigo-600/30 hover:bg-indigo-600 hover:text-white border border-indigo-500/30 text-indigo-400 font-semibold rounded p-1 text-[9px] text-center transition-all cursor-pointer"
                           >
-                            💻 LAPTOPS
+                            💻 Laptop
                           </button>
                         </div>
                       </div>
@@ -1238,18 +1226,18 @@ class NotificationController extends Controller
                     </div>
 
                     {/* Channel 2: Live Notifications Feed Center */}
-                    <div className={`p-6 rounded-3xl border flex flex-col justify-between space-y-4 relative overflow-hidden min-h-[460px] ${
+                    <div className={`p-6 rounded-3xl border flex flex-col justify-between space-y-4 relative overflow-hidden min-h-[560px] ${
                       isDarkMode ? "bg-[#161920] border-white/5 text-white" : "bg-gradient-to-b from-teal-50 to-white border-slate-200/80 shadow-sm"
                     }`}>
                       <div>
-                        <span className="bg-[#10B981] text-slate-950 font-mono text-[9px] px-2 py-0.5 rounded-full uppercase tracking-wider font-extrabold">Notification Center</span>
-                        <h4 className="font-extrabold text-sm text-slate-900 dark:text-white mt-1.5">Live Delivery Feed</h4>
+                        <span className="bg-[#10B981] text-slate-950 font-mono text-[9px] px-2 py-0.5 rounded-full uppercase tracking-wider font-extrabold font-mono">Notification Center</span>
+                        <h4 className="font-extrabold text-sm text-slate-900 dark:text-white mt-1.5 font-bold">Live Delivery Feed</h4>
                         <p className="text-[11px] text-slate-500">Real-time alerts broadcasted instantly to subscriber list.</p>
                       </div>
 
                       {/* Phone screen with interactive alerts */}
-                      <div className="bg-slate-950 p-4 border border-zinc-800 rounded-3xl h-[240px] flex flex-col justify-between my-2 relative text-slate-100 font-sans select-none shadow-xl overflow-hidden">
-                        <div className="flex items-center justify-between border-b border-white/10 pb-1.5 mb-1">
+                      <div className="bg-slate-950 p-4 border border-zinc-800 rounded-3xl h-[340px] flex flex-col justify-between my-2 relative text-slate-100 font-sans select-none shadow-xl overflow-hidden">
+                        <div className="flex items-center justify-between border-b border-white/10 pb-1.5 mb-1 bg-slate-950">
                           <span className="text-[8px] font-black text-amber-400 uppercase tracking-widest font-mono">📱 Notification Feed</span>
                           <span className="bg-indigo-600/30 text-indigo-400 text-[6.5px] font-mono px-1.5 py-0.5 rounded-full font-bold">Live Synced</span>
                         </div>
@@ -1257,7 +1245,7 @@ class NotificationController extends Controller
                         {/* Interactive List of Notifications */}
                         <div className="flex-1 space-y-2 overflow-y-auto pr-0.5 text-left scrollbar-thin scrollbar-thumb-slate-800">
                           {activeNotifications.length === 0 ? (
-                            <div className="text-center py-8 text-slate-500 text-[9px] italic">
+                            <div className="text-center py-12 text-slate-500 text-[9px] italic">
                               No active notifications. Trigger one below!
                             </div>
                           ) : (
@@ -1270,7 +1258,7 @@ class NotificationController extends Controller
                                 className="bg-[#11141D] border border-white/5 rounded-xl p-2.5 relative hover:border-indigo-500/20 transition-all duration-200"
                               >
                                 <div className="flex justify-between items-start">
-                                  <span className="text-[7px] text-amber-400 font-bold tracking-wider uppercase font-mono bg-amber-400/5 px-1 rounded border border-amber-400/10">
+                                  <span className="text-[7px] text-amber-400 font-bold tracking-wider uppercase font-mono bg-amber-400/5 px-1 rounded border border-amber-400/10 font-mono">
                                     {notif.category}
                                   </span>
                                   <span className="text-[7px] text-slate-500 font-mono">{notif.time}</span>
@@ -1283,12 +1271,12 @@ class NotificationController extends Controller
                         </div>
 
                         {/* Status tag */}
-                        <div className="text-[7.5px] text-slate-500 text-center uppercase tracking-widest font-mono pt-1.5 border-t border-white/5 mt-1.5">
+                        <div className="text-[7.5px] text-slate-500 text-center uppercase tracking-widest font-mono pt-1.5 border-t border-white/5 mt-1.5 bg-slate-950">
                           PushMasterr High-Delivery Node Active
                         </div>
                       </div>
 
-                      {/* Interactive triggers at bottom of card */}
+                      {/* Interactive triggers at bottom of card - customized to be extremely short, preventing wrap */}
                       <div className="grid grid-cols-3 gap-1.5 pt-2">
                         <button 
                           onClick={() => {
@@ -1310,7 +1298,7 @@ class NotificationController extends Controller
                           }}
                           className="bg-indigo-650/40 hover:bg-indigo-600 text-white border border-indigo-500/20 font-extrabold rounded py-1 px-0.5 text-[8.5px] text-center transition-all cursor-pointer leading-tight"
                         >
-                          📢 Broadcast
+                          📢 Send
                         </button>
                         <button 
                           onClick={() => {
@@ -1332,13 +1320,13 @@ class NotificationController extends Controller
                           }}
                           className="bg-emerald-650/45 hover:bg-emerald-600 text-white border border-emerald-500/25 text-emerald-400 font-extrabold rounded py-1 px-0.5 text-[8.5px] text-center transition-all cursor-pointer leading-tight"
                         >
-                          💸 Checkout
+                          💸 Pay
                         </button>
                         <button 
                           onClick={() => setActiveNotifications([])}
-                          className="bg-slate-800 hover:bg-rose-600 hover:text-white border border-slate-705 text-slate-300 font-extrabold rounded py-1 px-0.5 text-[8.5px] text-center transition-all cursor-pointer leading-tight"
+                          className="bg-slate-850 hover:bg-[#F43F5E]/80 text-white border border-slate-700/50 font-extrabold rounded py-1 px-0.5 text-[8.5px] text-center transition-all cursor-pointer leading-tight"
                         >
-                          🧹 Clear Feed
+                          🧹 Clear
                         </button>
                       </div>
 
@@ -1348,7 +1336,7 @@ class NotificationController extends Controller
                     </div>
 
                     {/* Channel 3: Web Push notifications with computer mockup */}
-                    <div className={`p-6 rounded-3xl border flex flex-col justify-between space-y-4 relative overflow-hidden min-h-[460px] ${
+                    <div className={`p-6 rounded-3xl border flex flex-col justify-between space-y-4 relative overflow-hidden min-h-[560px] ${
                       isDarkMode ? "bg-[#161920] border-white/5 text-white" : "bg-gradient-to-b from-sky-50 to-white border-slate-200/80 shadow-sm"
                     }`}>
                       <div>
@@ -1358,7 +1346,7 @@ class NotificationController extends Controller
                       </div>
 
                       {/* Desktop/browser simulated mockup */}
-                      <div className="bg-[#1c1c1e] p-3 rounded-2xl border-4 border-slate-800 h-[240px] flex flex-col justify-between my-2 relative text-white">
+                      <div className="bg-[#1c1c1e] p-3 rounded-2xl border-4 border-slate-800 h-[340px] flex flex-col justify-between my-2 relative text-white">
                         <div className="flex gap-1.5 border-b border-white/5 pb-2 text-[8px] text-slate-400 font-mono">
                           <span className="text-rose-500">●</span>
                           <span className="text-amber-500">●</span>
@@ -1374,14 +1362,14 @@ class NotificationController extends Controller
                             key={webPushSimulatorOS}
                             initial={{ scale: 0.95, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
-                            className="bg-[#242426]/90 border border-white/10 p-2.5 rounded-xl hover:bg-[#2c2c2e] transition-colors text-left"
+                            className="bg-[#242426]/90 border border-white/10 p-3 rounded-xl hover:bg-[#2c2c2e] transition-colors text-left"
                           >
-                            <div className="flex justify-between items-center text-[8px] text-indigo-400 mb-1 font-mono uppercase tracking-widest">
+                            <div className="flex justify-between items-center text-[8px] text-indigo-400 mb-1.5 font-mono uppercase tracking-widest">
                               <span>🔔 {webPushSimulatorOS === "chrome" ? "Google Chrome" : webPushSimulatorOS === "safari" ? "macOS Safari" : "Edge System Alert"}</span>
                               <span>now</span>
                             </div>
                             <h5 className="font-bold text-[9px] text-white">🎁 Special Discount active!</h5>
-                            <p className="text-[8px] text-slate-300 leading-snug mt-0.5">Your shopping cart expires soon. Use code RECOVERY for 25% off checkout.</p>
+                            <p className="text-[8px] text-slate-300 leading-snug mt-0.5 font-sans">Your shopping cart expires soon. Use code RECOVERY for 25% off checkout.</p>
                           </motion.div>
                         </div>
 
@@ -1389,19 +1377,19 @@ class NotificationController extends Controller
                         <div className="grid grid-cols-3 gap-1">
                           <button 
                             onClick={() => setWebPushSimulatorOS("chrome")}
-                            className={`text-[8px] font-bold py-1 px-1 rounded transition-colors ${webPushSimulatorOS === "chrome" ? "bg-white/20 text-white" : "text-slate-500 hover:text-white bg-transparent"}`}
+                            className={`text-[8px] font-bold py-1 px-1 rounded transition-colors cursor-pointer ${webPushSimulatorOS === "chrome" ? "bg-white/20 text-white" : "text-slate-500 hover:text-white bg-transparent"}`}
                           >
                             Chrome
                           </button>
                           <button 
                             onClick={() => setWebPushSimulatorOS("safari")}
-                            className={`text-[8px] font-bold py-1 px-1 rounded transition-colors ${webPushSimulatorOS === "safari" ? "bg-white/20 text-white" : "text-slate-500 hover:text-white bg-transparent"}`}
+                            className={`text-[8px] font-bold py-1 px-1 rounded transition-colors cursor-pointer ${webPushSimulatorOS === "safari" ? "bg-white/20 text-white" : "text-slate-500 hover:text-white bg-transparent"}`}
                           >
                             Safari
                           </button>
                           <button 
                             onClick={() => setWebPushSimulatorOS("edge font")}
-                            className={`text-[8px] font-bold py-1 px-1 rounded transition-colors ${webPushSimulatorOS === "edge font" ? "bg-white/20 text-white" : "text-slate-500 hover:text-white bg-transparent"}`}
+                            className={`text-[8px] font-bold py-1 px-1 rounded transition-colors cursor-pointer ${webPushSimulatorOS === "edge font" ? "bg-white/20 text-white" : "text-slate-500 hover:text-white bg-transparent"}`}
                           >
                             Edge
                           </button>
@@ -2788,7 +2776,8 @@ class NotificationController extends Controller
           </div>
 
           {/* RIGHT: Live Handheld Handset / Desktop Device Simulator (3 Columns) */}
-          <div className="lg:col-span-3 lg:sticky lg:top-24 space-y-6">
+          {activeTab !== "showcase" && activeTab !== "pricing" && activeTab !== "terms" && activeTab !== "portal" && activeTab !== "guide" && (
+            <div className="lg:col-span-3 lg:sticky lg:top-24 space-y-6">
             
             <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-5">
               
@@ -3173,6 +3162,7 @@ class NotificationController extends Controller
             </div>
 
           </div>
+          )}
 
         </div>
       </main>

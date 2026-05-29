@@ -2566,6 +2566,8 @@ class NotificationController extends Controller
                   currentSubscriptionTier={currentSubscriptionTier}
                   setCurrentSubscriptionTier={setCurrentSubscriptionTier}
                   playPhysicalNotificationChime={playPhysicalNotificationChime}
+                  razorpayKeyId={razorpayKeyId}
+                  razorpayIsLive={razorpayIsLive}
                 />
                 <StarRatingsForm
                   isDarkMode={isDarkMode}

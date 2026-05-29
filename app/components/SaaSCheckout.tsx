@@ -41,6 +41,8 @@ interface SaaSCheckoutProps {
   currentSubscriptionTier: string;
   setCurrentSubscriptionTier: (tier: string) => void;
   playPhysicalNotificationChime: () => void;
+  razorpayKeyId?: string;
+  razorpayIsLive?: boolean;
 }
 
 export function SaaSCheckout({
@@ -51,7 +53,9 @@ export function SaaSCheckout({
   handleButtonClickEffect,
   currentSubscriptionTier,
   setCurrentSubscriptionTier,
-  playPhysicalNotificationChime
+  playPhysicalNotificationChime,
+  razorpayKeyId = "rzp_test_Sv6JUzmpW6LOtn",
+  razorpayIsLive = false
 }: SaaSCheckoutProps) {
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "lifetime">("lifetime");
   const [includePremiumAddon, setIncludePremiumAddon] = useState(false);
@@ -1048,6 +1052,36 @@ export function SaaSCheckout({
                         </div>
                       </div>
                     )}
+                  </div>
+
+                  {/* Gateway Active Key details */}
+                  <div className={`mt-4 p-3 rounded-xl border border-dashed flex items-center justify-between gap-2.5 text-left text-[11px] leading-relaxed ${
+                    isDarkMode 
+                      ? "bg-[#090b10] border-white/10 text-slate-200" 
+                      : "bg-slate-50 border-slate-200 text-slate-800"
+                  }`}>
+                    <div className="flex items-center gap-2">
+                      <span className={`w-2 h-2 rounded-full animate-pulse shrink-0 ${razorpayIsLive ? "bg-emerald-500" : "bg-amber-500"}`} />
+                      <div>
+                        <span className="font-extrabold opacity-95 block text-[9px] uppercase tracking-wider">
+                          Active Gateway Connection
+                        </span>
+                        <span className="font-mono font-semibold block text-slate-500 dark:text-slate-400 select-all">
+                          {(() => {
+                            if (!razorpayKeyId) return "No Key Configured";
+                            if (razorpayKeyId.length <= 10) return razorpayKeyId;
+                            return `${razorpayKeyId.slice(0, 8)}...${razorpayKeyId.slice(-4)}`;
+                          })()}
+                        </span>
+                      </div>
+                    </div>
+                    <span className={`px-2 py-0.5 rounded text-[8px] font-mono font-extrabold uppercase tracking-widest ${
+                      razorpayIsLive 
+                        ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/20" 
+                        : "bg-amber-500/15 text-amber-600 border border-amber-500/20"
+                    }`}>
+                      {razorpayIsLive ? "Live Mode" : "Sandbox Mode"}
+                    </span>
                   </div>
 
                   {/* Submit CTA - Large button similar to screenshot */}

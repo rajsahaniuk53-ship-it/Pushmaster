@@ -84,9 +84,35 @@ export default function PushNotificationSaaS() {
   const [lastClickedButtonId, setLastClickedButtonId] = useState<string | null>(null);
 
   // Razorpay global state registers
-  const [razorpayKeyId, setRazorpayKeyId] = useState("rzp_test_Sv6JUzmpW6LOtn");
-  const [razorpaySecret, setRazorpaySecret] = useState("zzsJTV7bs1m1CIDUZpDds5Ot");
-  const [razorpayIsLive, setRazorpayIsLive] = useState(false);
+  const [razorpayKeyId, setRazorpayKeyId] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("rzp_key_id");
+      if (saved) return saved;
+    }
+    return "rzp_test_Sv6JUzmpW6LOtn";
+  });
+  const [razorpaySecret, setRazorpaySecret] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("rzp_secret");
+      if (saved) return saved;
+    }
+    return "zzsJTV7bs1m1CIDUZpDds5Ot";
+  });
+  const [razorpayIsLive, setRazorpayIsLive] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("rzp_is_live");
+      if (saved) return saved === "true";
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("rzp_key_id", razorpayKeyId);
+      localStorage.setItem("rzp_secret", razorpaySecret);
+      localStorage.setItem("rzp_is_live", String(razorpayIsLive));
+    }
+  }, [razorpayKeyId, razorpaySecret, razorpayIsLive]);
 
   // Link safety anti-spam crawler registers
   const [spamStatus, setSpamStatus] = useState<"clean" | "checking" | "spam_detected" | "idle">("clean");

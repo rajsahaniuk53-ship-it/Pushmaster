@@ -439,7 +439,7 @@ export function SaaSCheckout({
                       includePremiumAddon 
                         ? "bg-emerald-600 text-white border-emerald-500 shadow" 
                         : isDarkMode
-                        ? "bg-white/5 text-slate-405 border-white/10 hover:text-white"
+                        ? "bg-white/5 text-slate-400 border-white/10 hover:text-white"
                         : "bg-white text-slate-800 border-slate-200 shadow-sm hover:bg-slate-50"
                     }`}
                   >
@@ -448,7 +448,7 @@ export function SaaSCheckout({
                     </div>
                     {includePremiumAddon ? "Premium Add-on Added ✔" : "+ Click to Include Premium Add-on!"}
                   </button>
-                  <p className={`text-[10px] mt-1.5 ${isDarkMode ? "text-slate-400" : "text-slate-705 font-semibold"}`}>
+                  <p className={`text-[10px] mt-1.5 ${isDarkMode ? "text-slate-400" : "text-slate-700 font-bold"}`}>
                     {includePremiumAddon ? "🎉 Great Choice! This will automatically combine with either Startup/Pro plans." : "Combine this optional add-on to supercharge automated YouTube hooks & directory segments."}
                   </p>
                 </div>
@@ -549,7 +549,7 @@ export function SaaSCheckout({
             </div>
 
             <div className={`p-4 rounded-xl border flex items-start gap-2.5 text-xs leading-relaxed ${
-              isDarkMode ? "bg-[#0A0D14]/80 border-white/5 text-slate-300" : "bg-emerald-50/70 border-emerald-300/30 text-slate-855"
+              isDarkMode ? "bg-[#0A0D14]/80 border-white/5 text-slate-300" : "bg-emerald-50/70 border-emerald-300/30 text-slate-800"
             }`}>
               <div className="text-xl shrink-0">💡</div>
               <div className={isDarkMode ? "text-slate-300" : "text-slate-800 font-extrabold text-[12.5px]"}>
@@ -581,7 +581,7 @@ export function SaaSCheckout({
             <div className="overflow-x-auto w-full">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
-                  <tr className={`border-b ${isDarkMode ? "border-white/5 text-slate-205 bg-white/5" : "border-slate-200 text-slate-950 bg-slate-100"}`}>
+                  <tr className={`border-b ${isDarkMode ? "border-white/5 text-slate-200 bg-white/5" : "border-slate-200 text-slate-950 bg-slate-100"}`}>
                     <th className="p-3 font-black uppercase text-[10px] tracking-wider w-[40%]">Capability / Feature</th>
                     <th className="p-3 font-black uppercase text-[10px] tracking-wider text-center bg-indigo-500/5 text-indigo-700 dark:text-indigo-400 font-black">Startup Lifetime <span className="block text-[9px] font-mono font-bold text-indigo-800 dark:text-indigo-300">₹41,500 ($499)</span></th>
                     <th className="p-3 font-black uppercase text-[10px] tracking-wider text-center bg-emerald-500/5 text-emerald-700 dark:text-emerald-400 font-black font-extrabold">Pro Lifetime <span className="block text-[9px] font-mono font-bold text-emerald-800 dark:text-emerald-350">₹66,050 ($799)</span></th>
@@ -663,7 +663,7 @@ export function SaaSCheckout({
             <h2 className={`text-xl md:text-2xl font-black tracking-tight ${isDarkMode ? "text-white" : "text-slate-900"}`}>
               Direct Checkout & Billing Hub
             </h2>
-            <p className={`text-xs ${isDarkMode ? "text-slate-400" : "text-slate-705 font-bold"} leading-relaxed`}>
+            <p className={`text-xs ${isDarkMode ? "text-slate-400" : "text-slate-700 font-bold"} leading-relaxed`}>
               Validate your selection and process payments cleanly. Enjoy perpetual software ownership with zero recurring subscriber traps.
             </p>
 

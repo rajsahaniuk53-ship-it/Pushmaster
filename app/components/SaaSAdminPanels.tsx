@@ -272,7 +272,7 @@ export function CustomerAdminPanel({
 
       {/* 1-Click Template presets section */}
       <div className={`p-4 rounded-xl border mb-6 ${isDarkMode ? "bg-indigo-950/20 border-indigo-500/10" : "bg-indigo-50/40 border-indigo-100"}`}>
-        <h4 className={`text-xs uppercase font-extrabold tracking-wider mb-2.5 flex items-center gap-1.5 ${isDarkMode ? "text-indigo-300" : "text-indigo-805"}`}>
+        <h4 className={`text-xs uppercase font-extrabold tracking-wider mb-2.5 flex items-center gap-1.5 ${isDarkMode ? "text-indigo-300" : "text-indigo-800"}`}>
           <Sparkles className="w-4 h-4 text-amber-500 animate-pulse" />
           ⚡ Instant 1-Click Platform Templates (No Typing Needed)
         </h4>
@@ -526,78 +526,111 @@ export function SuperAdminPanel({
     <motion.div 
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className={`p-6 md:p-8 rounded-2xl border transition-all ${
+      className="space-y-8"
+    >
+      {/* 1. Header Card Panel */}
+      <div className={`p-6 md:p-8 rounded-2xl border transition-all ${
         isDarkMode 
           ? "bg-[#161920] border-white/5 text-slate-200" 
           : "bg-white border-slate-200 text-slate-800 shadow-sm"
-      }`}
-    >
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-        <div>
-          <h2 className={`text-base md:text-lg font-bold flex items-center gap-2 ${isDarkMode ? "text-white" : "text-slate-900"}`}>
-            <Lock className="w-5 h-5 text-indigo-500 animate-pulse" />
-            My Admin: Platform SaaS Controller
-          </h2>
-          <p className={`text-xs ${isDarkMode ? "text-slate-500" : "text-slate-800 font-semibold"} mt-1`}>Platform management console. Customize rates/pricing, look over clients logs, and manage testimonials rating feed.</p>
-        </div>
-        <span className={`text-[10px] uppercase font-mono tracking-widest px-2.5 py-1 rounded border font-semibold ${
-          isDarkMode ? "bg-amber-500/10 text-amber-400 border-amber-500/20" : "bg-amber-50 text-amber-600 border-amber-200"
-        }`}>
-          Platform Super Admin
-        </span>
-      </div>
-
-      {successMsg && (
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="p-3 mb-4 rounded-xl text-xs bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 flex items-center gap-2 font-semibold"
-        >
-          <Check className="w-4 h-4" />
-          {successMsg}
-        </motion.div>
-      )}
-
-      {/* Super Admin Stats */}
-      <h3 className={`text-xs uppercase font-extrabold tracking-wider mb-3 ${isDarkMode ? "text-slate-300" : "text-slate-700"}`}>
-        My Server Node Stats
-      </h3>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        {adminStats.map((st, i) => (
-          <div key={i} className={`p-4 rounded-xl border ${isDarkMode ? "bg-[#0D0F14]/50 border-white/5" : "bg-slate-50 border-slate-200/60 shadow-xs"}`}>
-            <div className={`flex items-center justify-between ${isDarkMode ? "text-slate-400" : "text-slate-700 font-bold"} mb-2`}>
-              <span className="text-[10px] font-semibold uppercase tracking-wider">{st.title}</span>
-              {st.icon}
-            </div>
-            <p className={`text-base md:text-lg font-bold font-mono ${isDarkMode ? "text-white" : "text-slate-900"}`}>{st.val}</p>
-            <p className="text-[9px] text-indigo-500 mt-1 font-semibold">{st.change}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* Rates Adjuster and Customer Registry */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        {/* Rate Settings Form */}
-        <form onSubmit={handleUpdatePrice} className={`p-5 rounded-xl border flex flex-col justify-between ${isDarkMode ? "bg-[#0D0F14]/70 border-white/5" : "bg-slate-50 border-slate-100"}`}>
+      }`}>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h4 className={`text-xs uppercase font-extrabold tracking-wider mb-2 flex items-center gap-1.5 ${isDarkMode ? "text-white" : "text-slate-800"}`}>
-              <Sparkles className="w-4 h-4 text-amber-400 animate-spin-slow" />
-              Platform Plans & Rate Card Adjuster
-            </h4>
-            <p className={`text-[11px] ${isDarkMode ? "text-slate-500" : "text-slate-700 font-bold"} mb-4`}>Adjust plan names, pricing, limits, and quotas easily. Your updates reflect instantly across checkouts, chatbot, and billing pages.</p>
-            
-            <div className="space-y-3.5 mb-4">
+            <h2 className={`text-base md:text-lg font-bold flex items-center gap-2 ${isDarkMode ? "text-white" : "text-slate-900"}`}>
+              <Lock className="w-5 h-5 text-indigo-500 animate-pulse" />
+              SaaS Central Admin Controller
+            </h2>
+            <p className={`text-xs ${isDarkMode ? "text-slate-400" : "text-slate-600 font-semibold"} mt-1`}>
+              Configure and modify your SaaS pricing rates, connect live/sandbox Razorpay payment gateways, and organize client accounts or testimonials.
+            </p>
+          </div>
+          <span className={`self-start md:self-center text-[10px] uppercase font-mono tracking-widest px-3 py-1 rounded border font-bold ${
+            isDarkMode ? "bg-amber-500/10 text-amber-400 border-amber-500/20" : "bg-amber-50 text-amber-700 border-amber-200 shadow-xs"
+          }`}>
+            Platform Super Admin
+          </span>
+        </div>
+
+        {successMsg && (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="p-3.5 mt-4 rounded-xl text-xs bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 flex items-center gap-2 font-bold"
+          >
+            <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+            {successMsg}
+          </motion.div>
+        )}
+      </div>
+
+      {/* 2. Platform Statistics Panel */}
+      <div className={`p-6 rounded-2xl border transition-all ${
+        isDarkMode 
+          ? "bg-[#161920] border-white/5 text-slate-200" 
+          : "bg-white border-slate-200 text-slate-850 shadow-sm"
+      }`}>
+        <h3 className={`text-xs uppercase font-extrabold tracking-wider mb-4 flex items-center gap-1.5 ${
+          isDarkMode ? "text-slate-300" : "text-slate-700 font-black"
+        }`}>
+          <Activity className="w-4 h-4 text-indigo-500" />
+          Gateway Revenue & Worker Delivery Telemetry
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          {adminStats.map((st, i) => (
+            <div key={i} className={`p-4 rounded-xl border ${
+              isDarkMode 
+                ? "bg-[#0D0F14]/50 border-white/5" 
+                : "bg-slate-50 border-slate-200/60 shadow-xs"
+            }`}>
+              <div className="flex items-center justify-between mb-2">
+                <span className={`text-[10px] font-bold uppercase tracking-wider ${
+                  isDarkMode ? "text-slate-400" : "text-slate-600"
+                }`}>{st.title}</span>
+                {st.icon}
+              </div>
+              <p className={`text-base md:text-lg font-bold font-mono ${isDarkMode ? "text-white" : "text-slate-900"}`}>{st.val}</p>
+              <p className="text-[10px] text-indigo-600 dark:text-indigo-400 mt-1 font-bold">{st.change}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 3. Pricing Adjuster Form Card */}
+      <form onSubmit={handleUpdatePrice} className={`p-6 rounded-2xl border flex flex-col justify-between ${
+        isDarkMode 
+          ? "bg-[#161920] border-white/5 text-slate-200" 
+          : "bg-white border-slate-200 text-slate-800 shadow-sm"
+      }`}>
+        <div>
+          <div className="flex items-center gap-2 mb-3 border-b border-slate-100 dark:border-white/5 pb-3">
+            <span className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-500">
+              <Sparkles className="w-5 h-5" />
+            </span>
+            <div>
+              <h4 className={`font-bold text-sm tracking-wide ${isDarkMode ? "text-white" : "text-slate-900"}`}>
+                🔧 SaaS Pricing Rates & Limits Card Adjuster
+              </h4>
+              <p className={`text-xs ${isDarkMode ? "text-slate-400" : "text-slate-600 font-semibold"}`}>
+                Change any tier name, quota, dollar rate, or INR rupee pricing instantly. Reflected on billing checkouts.
+              </p>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-4">
+            <div className="space-y-4">
               <div>
-                <label className="block text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-1">
-                  Select Target Plan to Edit
+                <label className={`block text-[11px] font-bold uppercase tracking-wider mb-1.5 ${
+                  isDarkMode ? "text-slate-300" : "text-slate-700 font-bold"
+                }`}>
+                  Select Target Plan to Modify
                 </label>
                 <select
                   value={targetPlanId}
                   onChange={(e) => setTargetPlanId(e.target.value)}
-                  className={`w-full text-xs font-semibold rounded-lg p-2.5 focus:outline-none ${
+                  className={`w-full text-xs font-semibold rounded-xl p-3 focus:outline-none border-2 ${
                     isDarkMode 
-                      ? "bg-[#161920] border-white/5 text-white" 
-                      : "bg-white border-slate-200 text-slate-900"
+                      ? "bg-[#0D0F14]/70 border-white/10 text-white focus:border-indigo-500" 
+                      : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-550"
                   }`}
                 >
                   <optgroup label="Monthly Subscription Plans">
@@ -615,9 +648,10 @@ export function SuperAdminPanel({
                 </select>
               </div>
 
-              {/* Edit Plan Text (Name) */}
               <div>
-                <label className="block text-[10px] font-semibold text-indigo-400 uppercase tracking-widest mb-1">
+                <label className={`block text-[11px] font-bold uppercase tracking-wider mb-1.5 ${
+                  isDarkMode ? "text-indigo-400" : "text-indigo-750 font-bold"
+                }`}>
                   Plan Display Name
                 </label>
                 <input
@@ -625,67 +659,73 @@ export function SuperAdminPanel({
                   value={newPlanName}
                   onChange={(e) => setNewPlanName(e.target.value)}
                   placeholder="e.g. Pro Premium Deluxe"
-                  className={`w-full text-xs font-semibold rounded-lg p-2.5 focus:outline-none border ${
+                  className={`w-full text-xs font-semibold rounded-xl p-3 focus:outline-none border-2 transition-all ${
                     isDarkMode 
-                      ? "bg-[#161920] border-white/5 text-white focus:border-indigo-500" 
-                      : "bg-white border-slate-200 text-slate-900 focus:border-indigo-500"
+                      ? "bg-[#0D0F14]/70 border-white/10 text-white focus:border-indigo-500" 
+                      : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-500"
                   }`}
                   required
                 />
               </div>
+            </div>
 
-              {/* Edit Plan Limits Notification Quotas text */}
+            <div className="space-y-4">
               <div>
-                <label className="block text-[10px] font-semibold text-purple-400 uppercase tracking-widest mb-1">
+                <label className={`block text-[11px] font-bold uppercase tracking-wider mb-1.5 ${
+                  isDarkMode ? "text-purple-400" : "text-purple-750 font-bold"
+                }`}>
                   Plan Limits / Subscriber Quota Text
                 </label>
                 <input
                   type="text"
                   value={newPlanLimit}
                   onChange={(e) => setNewPlanLimit(e.target.value)}
-                  placeholder="e.g. Up to 50,050 active subscribers"
-                  className={`w-full text-xs font-semibold rounded-lg p-2.5 focus:outline-none border ${
+                  placeholder="e.g. Up to 50,000 active subscribers"
+                  className={`w-full text-xs font-semibold rounded-xl p-3 focus:outline-none border-2 transition-all ${
                     isDarkMode 
-                      ? "bg-[#161920] border-white/5 text-white focus:border-purple-500" 
-                      : "bg-white border-slate-200 text-slate-900 focus:border-purple-500"
+                      ? "bg-[#0D0F14]/70 border-white/10 text-white focus:border-purple-500" 
+                      : "bg-slate-50 border-slate-200 text-slate-900 focus:border-purple-500"
                   }`}
                   required
                 />
               </div>
 
-              {/* Dual Rates Editing Inputs (USD style top, INR style below) */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-1">
-                    USD Price ($ Rate)
+                  <label className={`block text-[11px] font-bold uppercase tracking-wider mb-1.5 ${
+                    isDarkMode ? "text-emerald-400" : "text-emerald-700 font-bold"
+                  }`}>
+                    Price in USD ($)
                   </label>
                   <input
                     type="number"
                     value={newPriceUSD}
                     onChange={(e) => setNewPriceUSD(e.target.value)}
                     placeholder="e.g. 59"
-                    className={`w-full text-xs font-bold font-mono rounded-lg p-2.5 focus:outline-none border ${
+                    className={`w-full text-xs font-bold font-mono rounded-xl p-3 focus:outline-none border-2 transition-all ${
                       isDarkMode 
-                        ? "bg-[#161920] border-white/5 text-white focus:border-emerald-500" 
-                        : "bg-white border-slate-200 text-slate-900 focus:border-emerald-500"
+                        ? "bg-[#0D0F14]/70 border-white/10 text-white focus:border-emerald-500" 
+                        : "bg-slate-50 border-slate-200 text-slate-900 focus:border-emerald-500"
                     }`}
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">
-                    INR Price (₹ Rate)
+                  <label className={`block text-[11px] font-bold uppercase tracking-wider mb-1.5 ${
+                    isDarkMode ? "text-slate-300" : "text-slate-700 font-bold"
+                  }`}>
+                    Price in INR (₹)
                   </label>
                   <input
                     type="number"
                     value={newPriceINR}
                     onChange={(e) => setNewPriceINR(e.target.value)}
                     placeholder="e.g. 4999"
-                    className={`w-full text-xs font-bold font-mono rounded-lg p-2.5 focus:outline-none border ${
+                    className={`w-full text-xs font-bold font-mono rounded-xl p-3 focus:outline-none border-2 transition-all ${
                       isDarkMode 
-                        ? "bg-[#161920] border-white/5 text-white focus:border-indigo-500" 
-                        : "bg-white border-slate-200 text-slate-900 focus:border-indigo-500"
+                        ? "bg-[#0D0F14]/70 border-white/10 text-white focus:border-indigo-500" 
+                        : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-500"
                     }`}
                     required
                   />
@@ -693,223 +733,307 @@ export function SuperAdminPanel({
               </div>
             </div>
           </div>
+        </div>
 
+        <div className="border-t border-slate-100 dark:border-white/5 pt-4 mt-2 flex justify-end">
           <button
             type="submit"
             onClick={() => handleButtonClickEffect("btn-update-rate")}
-            className={`w-full text-xs font-semibold py-2.5 mt-2 rounded-lg flex items-center justify-center gap-1.5 cursor-pointer shadow-sm transition-all ${
+            className={`w-full md:w-auto px-10 text-xs font-bold uppercase py-3 rounded-xl flex items-center justify-center gap-2 cursor-pointer shadow-md transition-all ${
               lastClickedButtonId === "btn-update-rate"
-                ? "bg-amber-500 text-slate-950 scale-95 border border-amber-400 font-extrabold shadow-md shadow-amber-500/20"
-                : "bg-indigo-600 hover:bg-indigo-500 text-white"
+                ? "bg-amber-500 text-slate-950 scale-95 border-2 border-amber-300 font-extrabold"
+                : "bg-indigo-600 hover:bg-indigo-505 text-white"
             }`}
           >
-            Save Card Information & Rates
+            Update Tier Plan Rates & Synchronize
           </button>
-        </form>
+        </div>
+      </form>
 
-        {/* Client User Accounts Directory */}
-        <div className={`p-5 rounded-xl border flex flex-col justify-between ${isDarkMode ? "bg-[#0D0F14]/70 border-white/5" : "bg-slate-50 border-slate-100"}`}>
-          <div>
-            <h4 className={`text-xs uppercase font-extrabold tracking-wider mb-2 flex items-center gap-1.5 ${isDarkMode ? "text-white" : "text-slate-800"}`}>
-              <Users className="w-4 h-4 text-emerald-500" />
-              SaaS Client Accounts Directory
-            </h4>
-            <div className="space-y-2 pt-1.5 max-h-[170px] overflow-y-auto pr-1">
-              <div className="flex items-center justify-between text-[10px] uppercase tracking-wider font-semibold pb-1.5 border-b border-dashed border-slate-200/50">
-                <span className={isDarkMode ? "text-slate-400" : "text-slate-700"}>Registered Client Email</span>
-                <span className={isDarkMode ? "text-slate-400" : "text-slate-700"}>Active Badge</span>
+      {/* 4. Connected Clients List & Customer Fast Registration simulator */}
+      <div className={`p-6 rounded-2xl border transition-all ${
+        isDarkMode 
+          ? "bg-[#161920] border-white/5 text-slate-200" 
+          : "bg-white border-slate-200 text-slate-800 shadow-sm"
+      }`}>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Left Column: Registered Client Directory */}
+          <div className="lg:col-span-7 space-y-4">
+            <div className="flex items-center gap-2 pb-2 border-b border-slate-100 dark:border-white/5">
+              <span className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-500">
+                <Users className="w-5 h-5" />
+              </span>
+              <div>
+                <h4 className={`font-bold text-sm tracking-wide ${isDarkMode ? "text-white" : "text-slate-950"}`}>
+                  SaaS Registered Client Accounts Directory
+                </h4>
+                <p className={`text-xs ${isDarkMode ? "text-slate-400" : "text-slate-600"}`}>
+                  A complete records file of verified customers using active subscription licenses.
+                </p>
+              </div>
+            </div>
+
+            <div className="border border-slate-100 dark:border-white/5 rounded-xl p-4 max-h-[220px] overflow-y-auto space-y-2.5 bg-slate-50/50 dark:bg-[#0D0F14]/30">
+              <div className="flex items-center justify-between text-[10px] uppercase tracking-wider font-extrabold pb-2 border-b border-dashed border-slate-200/60 dark:border-white/10 text-slate-550 dark:text-slate-400">
+                <span>REGISTERED CLIENT EMAIL</span>
+                <span>LICENSE ACTIVE ACCESS LEVEL</span>
               </div>
               {clients.map((c, i) => (
-                <div key={i} className="flex items-center justify-between text-[11px] py-1 border-b border-white/5 last:border-0">
-                  <span className={`font-mono ${isDarkMode ? "text-slate-300" : "text-slate-750 font-medium"}`}>{c.email}</span>
-                  <span className={`px-2 py-0.5 rounded text-[8px] font-extrabold border ${
+                <div key={i} className="flex items-center justify-between text-xs py-2 border-b border-slate-100/50 dark:border-white/5 last:border-0 hover:bg-white/5">
+                  <span className={`font-mono text-xs font-semibold ${isDarkMode ? "text-slate-300" : "text-slate-700"}`}>{c.email}</span>
+                  <span className={`px-2 py-0.5 rounded text-[9px] font-extrabold border uppercase tracking-widest ${
                     c.tier.includes("LIFETIME")
-                      ? "bg-amber-500/10 text-amber-500 border-amber-500/20"
+                      ? "bg-amber-500/10 text-amber-600 border-amber-500/20"
                       : c.tier.includes("PRO") || c.tier.includes("VIP")
-                      ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/20"
-                      : "bg-indigo-500/10 text-indigo-550 border-indigo-500/20"
+                      ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"
+                      : "bg-indigo-500/10 text-indigo-650 dark:text-indigo-400 border-indigo-500/20"
                   }`}>
                     {c.tier}
                   </span>
                 </div>
               ))}
             </div>
+            <span className={`block text-[10px] ${isDarkMode ? "text-slate-550" : "text-slate-500 font-medium"} italic text-right`}>
+              Authorized connection: PostgreSQL Client Node Live
+            </span>
+          </div>
 
-            {/* 1-Click Customer Add Section */}
-            <div className={`mt-5 p-3 rounded-lg border ${isDarkMode ? "bg-[#161a24] border-white/5" : "bg-white border-slate-200"}`}>
-              <h5 className={`text-[10px] uppercase font-bold tracking-widest mb-2 flex items-center gap-1.5 ${isDarkMode ? "text-emerald-400" : "text-emerald-700"}`}>
-                ⚡ One-Click Fast Customer Creator
-              </h5>
-              <form onSubmit={handleQuickAddClient} className="space-y-2.5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          {/* Right Column: 1-Click Sandbox Fast Customer Creator Form */}
+          <div className="lg:col-span-5">
+            <div className={`p-5 rounded-2xl border-2 h-full flex flex-col justify-between ${
+              isDarkMode ? "bg-[#111319] border-white/5" : "bg-slate-50 border-slate-200/60 shadow-xs"
+            }`}>
+              <div>
+                <div className="flex items-center gap-1.5 mb-3">
+                  <span className="p-1 rounded bg-emerald-500/10 text-emerald-500">
+                    <PlusCircle className="w-4.5 h-4.5 animate-bounce-slow" />
+                  </span>
+                  <h5 className={`text-xs uppercase font-extrabold tracking-wider ${isDarkMode ? "text-emerald-400" : "text-emerald-800"}`}>
+                    SaaS Fast License Custom Creator
+                  </h5>
+                </div>
+                <p className={`text-[11px] mb-4 ${isDarkMode ? "text-slate-400" : "text-slate-650 font-medium"}`}>
+                  Simulate registering standard, custom agency-level, or perpetual premium clients on database instantly.
+                </p>
+
+                <form onSubmit={handleQuickAddClient} className="space-y-4">
                   <div>
+                    <label className={`block text-[10px] font-bold uppercase tracking-widest mb-1 ${
+                      isDarkMode ? "text-slate-400" : "text-slate-700 font-bold"
+                    }`}>
+                      Customer Email
+                    </label>
                     <input
                       type="email"
                       value={quickAddEmail}
                       onChange={(e) => setQuickAddEmail(e.target.value)}
-                      placeholder="e.g. customer@fastmail.com"
-                      className={`w-full text-xs font-mono p-1.5 rounded border focus:outline-none ${
-                        isDarkMode ? "bg-[#0F1117] border-white/10 text-slate-200" : "bg-slate-50 border-slate-200 text-slate-800"
+                      placeholder="e.g. buyer@checkout.com"
+                      className={`w-full text-xs font-mono p-3 rounded-xl border-2 focus:outline-none transition-colors ${
+                        isDarkMode 
+                          ? "bg-[#0F1117] border-white/10 text-slate-200 focus:border-emerald-500" 
+                          : "bg-white border-slate-200 text-slate-800 focus:border-emerald-500"
                       }`}
                       required
                     />
                   </div>
+
                   <div>
+                    <label className={`block text-[10px] font-bold uppercase tracking-widest mb-1 ${
+                      isDarkMode ? "text-slate-400" : "text-slate-700 font-bold"
+                    }`}>
+                      Subscription Level License
+                    </label>
                     <select
                       value={quickAddTier}
                       onChange={(e) => setQuickAddTier(e.target.value)}
-                      className={`w-full text-xs p-1.5 rounded border focus:outline-none ${
-                        isDarkMode ? "bg-[#0F1117] border-white/10 text-slate-202" : "bg-slate-50 border-slate-200 text-slate-800"
+                      className={`w-full text-xs p-3 rounded-xl border-2 focus:outline-none transition-colors ${
+                        isDarkMode 
+                          ? "bg-[#0F1117] border-white/10 text-slate-200 focus:border-emerald-500" 
+                          : "bg-white border-slate-200 text-slate-800 font-semibold focus:border-emerald-500"
                       }`}
                     >
-                      <option value="STARTUP LIFETIME">Startup Lifetime</option>
-                      <option value="PRO LIFETIME">Pro Lifetime</option>
-                      <option value="LITE STARTER">Lite Starter</option>
-                      <option value="PRO PREMIUM">Pro Premium</option>
-                      <option value="ULTIMATE ENTERPRISE">Ultimate Enterprise</option>
+                      <option value="STARTUP LIFETIME">Startup Lifetime (₹4,999)</option>
+                      <option value="PRO LIFETIME">Pro Lifetime (₹9,999)</option>
+                      <option value="LITE STARTER">Lite Monthly (₹999/mo)</option>
+                      <option value="PRO PREMIUM">Pro Monthly (₹1,999/mo)</option>
+                      <option value="ULTIMATE ENTERPRISE">Ultimate Enterprise (Custom)</option>
                     </select>
                   </div>
-                </div>
-                <button
-                  type="submit"
-                  onClick={() => handleButtonClickEffect("btn-add-customer")}
-                  className={`w-full text-[11px] font-bold py-1.5 rounded cursor-pointer transition-all flex items-center justify-center gap-1.5 ${
-                    lastClickedButtonId === "btn-add-customer"
-                      ? "bg-emerald-400 text-slate-950 scale-95"
-                      : "bg-emerald-600 hover:bg-emerald-500 text-white"
-                  }`}
-                >
-                  ⚡ Register Customer instantly
-                </button>
-              </form>
+
+                  <button
+                    type="submit"
+                    onClick={() => handleButtonClickEffect("btn-add-customer")}
+                    className={`w-full text-xs font-extrabold uppercase py-3 rounded-xl cursor-pointer transition-all flex items-center justify-center gap-2 border-2 ${
+                      lastClickedButtonId === "btn-add-customer"
+                        ? "bg-emerald-400 text-slate-950 scale-95 border-emerald-300 shadow-md"
+                        : "bg-emerald-600 hover:bg-emerald-500 text-white border-transparent"
+                    }`}
+                  >
+                    Register Client and Dispatch Keys
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
-          <span className={`block text-[9px] ${isDarkMode ? "text-slate-500" : "text-slate-400"} italic text-right mt-3`}>Authorized SaaS customer billing database connected</span>
         </div>
       </div>
 
-      {/* Razorpay Gateway Settings Form */}
-      <div className={`p-5 rounded-xl border mb-8 ${isDarkMode ? "bg-amber-950/10 border-amber-500/10" : "bg-amber-50/20 border-amber-200"}`}>
-        <h4 className={`text-xs uppercase font-extrabold tracking-wider mb-2.5 flex items-center gap-1.5 ${isDarkMode ? "text-amber-400" : "text-amber-700"}`}>
-          💰 Razorpay Payment Gateway Live Console Integration
-        </h4>
-        <p className={`text-[11px] ${isDarkMode ? "text-slate-500" : "text-slate-755 font-bold"} mb-4`}>Input your active Live or Sandbox Razorpay gateway credentials. When users order push plans inside the Checkout Gate, transactions process instantly over this secure bridge.</p>
-        
-        <form onSubmit={handleSaveRazorpay} className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+      {/* 5. Razorpay Integration Panel Card */}
+      <div className={`p-6 rounded-2xl border transition-all ${
+        isDarkMode 
+          ? "bg-amber-950/15 border-amber-500/10 text-slate-200" 
+          : "bg-amber-50/20 border-amber-200/80 text-slate-800 shadow-sm"
+      }`}>
+        <div className="flex items-center gap-2 mb-3 border-b border-amber-500/10 pb-3">
+          <span className="p-1.5 rounded-lg bg-amber-500/10 text-amber-500">
+            <Lock className="w-5 h-5 animate-pulse" />
+          </span>
           <div>
-            <label className="block text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-1.5">
-              Razorpay API Key ID (rzp_live / rzp_test)
-            </label>
-            <input
-              type="text"
-              value={localRzpKeyId}
-              onChange={(e) => setLocalRzpKeyId(e.target.value)}
-              placeholder="e.g. rzp_live_Y93sN858203fD"
-              className={`w-full text-xs font-semibold font-mono rounded-lg p-2.5 focus:outline-none border ${
-                isDarkMode 
-                  ? "bg-[#161920] border-white/5 text-white" 
-                  : "bg-white border-slate-200 text-slate-900"
-              }`}
-              required
-            />
+            <h4 className={`font-bold text-sm tracking-wide ${isDarkMode ? "text-amber-400" : "text-amber-800"}`}>
+              💰 Razorpay Payment Gateway Live API Console Integration
+            </h4>
+            <p className={`text-xs ${isDarkMode ? "text-slate-400" : "text-slate-600 font-semibold"}`}>
+              Supply your active standard transaction keys. When users place orders in the system, they will process over this payment bridge.
+            </p>
           </div>
+        </div>
 
-          <div>
-            <label className="block text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-1.5">
-              Razorpay Webhook Secret Key
-            </label>
-            <input
-              type="password"
-              value={localRzpSecret}
-              onChange={(e) => setLocalRzpSecret(e.target.value)}
-              placeholder="••••••••••••••••••••"
-              className={`w-full text-xs font-semibold font-mono rounded-lg p-2.5 focus:outline-none border ${
-                isDarkMode 
-                  ? "bg-[#161920] border-white/5 text-white" 
-                  : "bg-white border-slate-200 text-slate-900"
-              }`}
-              required
-            />
-          </div>
-
-          <div className="flex gap-2 items-center">
-            <div className="flex-1">
-              <label className="block text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-2">
-                Gateway Payment Status
+        <form onSubmit={handleSaveRazorpay} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-1.5 p-1">
+              <label className={`block text-[10px] font-bold uppercase tracking-widest mb-1.5 ${
+                isDarkMode ? "text-slate-300" : "text-slate-700 font-bold"
+              }`}>
+                Razorpay API Key ID (rzp_live / rzp_test)
               </label>
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => setLocalRzpIsLive(prev => !prev)}
-                  className={`text-[10px] font-bold uppercase py-2 px-3.5 rounded-lg border cursor-pointer transition-all ${
-                    localRzpIsLive 
-                      ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" 
-                      : "bg-amber-500/10 text-amber-500 border-amber-500/20"
-                  }`}
-                >
-                  {localRzpIsLive ? "● Live Gateway Active" : "○ Sandbox Test Mode"}
-                </button>
-              </div>
+              <input
+                type="text"
+                value={localRzpKeyId}
+                onChange={(e) => setLocalRzpKeyId(e.target.value)}
+                placeholder="e.g. rzp_live_Y93sN858203fD"
+                className={`w-full text-xs font-semibold font-mono rounded-xl p-3 focus:outline-none border-2 transition-colors ${
+                  isDarkMode 
+                    ? "bg-[#161920] border-white/5 focus:border-amber-500/50 text-white" 
+                    : "bg-white border-slate-200 focus:border-amber-500 text-slate-900"
+                }`}
+                required
+              />
+              <span className="text-[10px] text-slate-500 block mt-1">
+                Your sandbox/live client identification key obtained from your Razorpay API Dashboard.
+              </span>
+            </div>
+
+            <div className="space-y-1.5 p-1">
+              <label className={`block text-[10px] font-bold uppercase tracking-widest mb-1.5 ${
+                isDarkMode ? "text-slate-300" : "text-slate-700"
+              }`}>
+                Razorpay Webhook Secret / Connection Auth Key
+              </label>
+              <input
+                type="password"
+                value={localRzpSecret}
+                onChange={(e) => setLocalRzpSecret(e.target.value)}
+                placeholder="••••••••••••••••••••"
+                className={`w-full text-xs font-semibold font-mono rounded-xl p-3 focus:outline-none border-2 transition-colors ${
+                  isDarkMode 
+                    ? "bg-[#161920] border-white/5 focus:border-amber-500/50 text-white" 
+                    : "bg-white border-slate-200 focus:border-amber-500 text-slate-900"
+                }`}
+                required
+              />
+              <span className="text-[10px] text-slate-500 block mt-1">
+                Secures webhook requests so only authenticated callbacks trigger customer provisioning.
+              </span>
+            </div>
+          </div>
+
+          <div className="border-t border-dashed border-amber-500/10 pt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <span className={`text-xs font-bold ${isDarkMode ? "text-slate-405" : "text-slate-650"}`}>
+                Gateway Server Mode Switch:
+              </span>
+              <button
+                type="button"
+                onClick={() => setLocalRzpIsLive(prev => !prev)}
+                className={`text-[10px] font-extrabold uppercase py-2 px-4 rounded-xl border-2 cursor-pointer transition-all ${
+                  localRzpIsLive 
+                    ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20" 
+                    : "bg-amber-500/15 text-amber-600 border-amber-500/30 font-extrabold"
+                }`}
+              >
+                {localRzpIsLive ? "● PROD LIVE REGISTERED" : "○ SANDBOX TESTING ACTIVE"}
+              </button>
             </div>
 
             <button
               type="submit"
               onClick={() => handleButtonClickEffect("btn-save-rzp")}
-              className={`text-xs font-bold py-2.5 px-4 rounded-lg flex items-center justify-center gap-1.5 cursor-pointer shadow-sm transition-all ${
+              className={`text-xs font-extrabold uppercase tracking-widest py-3 px-6 rounded-xl flex items-center justify-center gap-1.5 cursor-pointer shadow-md transition-all ${
                 lastClickedButtonId === "btn-save-rzp"
-                  ? "bg-amber-500 text-slate-950 scale-95 border border-amber-400 font-extrabold"
-                  : "bg-indigo-600 hover:bg-indigo-500 text-white"
+                  ? "bg-amber-500 text-slate-950 scale-95 border-2 border-amber-300"
+                  : "bg-amber-500 hover:bg-amber-600 text-slate-950"
               }`}
             >
-              Configure Gateway
+              Verify & Save Gateway Credentials
             </button>
           </div>
         </form>
       </div>
 
-      {/* Star Ratings and Feedback management */}
-      <div className="flex items-center justify-between mb-4 border-b border-dashed border-slate-200/40 pb-2">
-        <h3 className={`text-xs uppercase font-extrabold tracking-wider ${isDarkMode ? "text-slate-300" : "text-slate-700"}`}>
-          Platform Ratings Testimonial Logs ({reviews.length})
-        </h3>
-        <span className="text-[10px] text-slate-400 font-mono">Average score: 4.8 / 5 Stars ★</span>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {reviews.map(rev => (
-          <div 
-            key={rev.id} 
-            className={`p-4 rounded-xl border flex justify-between gap-3 ${
-              isDarkMode ? "bg-[#0D0F14]/40 border-white/5" : "bg-slate-50 border-slate-200 shadow-sm"
-            }`}
-          >
-            <div className="space-y-1 text-xs">
-              <div className="flex items-center gap-1.5">
-                <span className={`font-bold ${isDarkMode ? "text-slate-200" : "text-slate-900"}`}>{rev.name}</span>
-                <span className="text-[10px] text-slate-400 font-mono">({rev.email})</span>
-              </div>
-              <div className="flex gap-0.5">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className={`w-3.5 h-3.5 ${i < rev.rating ? "fill-amber-400 text-amber-400" : "text-slate-400"}`} />
-                ))}
-              </div>
-              <p className="text-slate-500 text-[11px] leading-relaxed italic">&ldquo;{rev.feedback}&rdquo;</p>
-              <p className="text-[9px] text-slate-400">{rev.date}</p>
-            </div>
-
-            <button
-              onClick={() => handleButtonClickEffect(`btn-delete-rev-${rev.id}`, () => handleRemoveReview(rev.id))}
-              className={`p-1.5 rounded-lg text-slate-400 hover:text-rose-500 self-start transition-all ${
-                lastClickedButtonId === `btn-delete-rev-${rev.id}`
-                  ? "bg-[#FFA07A] text-slate-950 scale-95 border border-[#FA8072]"
-                  : "hover:bg-slate-200/50"
-              }`}
-              title="Delete Review Log"
-            >
-              <Trash2 className="w-3.5 h-3.5" />
-            </button>
+      {/* 6. Ratings Testimonial Logs section */}
+      <div className={`p-6 rounded-2xl border transition-all ${
+        isDarkMode 
+          ? "bg-[#161920] border-white/5 text-slate-200" 
+          : "bg-white border-slate-200 text-slate-800 shadow-sm"
+      }`}>
+        <div className="flex items-center justify-between mb-4 border-b border-dashed border-slate-200/40 pb-3 flex-wrap gap-2">
+          <div>
+            <h3 className={`text-xs uppercase font-extrabold tracking-wider ${isDarkMode ? "text-slate-200" : "text-slate-800"}`}>
+              ★ Live Testimonials & Client Star Ratings Logs ({reviews.length})
+            </h3>
+            <p className={`text-xs ${isDarkMode ? "text-slate-500" : "text-slate-600"}`}>
+              Active platform evaluations visible online. Remove any invalid spam logs here.
+            </p>
           </div>
-        ))}
+          <span className="text-[10px] text-slate-400 font-mono font-bold bg-amber-500/5 px-2 py-1 rounded border border-amber-500/10">Average rating: 4.8 / 5 Stars ★</span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {reviews.map(rev => (
+            <div 
+              key={rev.id} 
+              className={`p-4 rounded-xl border flex justify-between gap-3 ${
+                isDarkMode ? "bg-[#0D0F14]/40 border-white/5" : "bg-slate-50 border-slate-200 shadow-xs"
+              }`}
+            >
+              <div className="space-y-1.5 text-xs">
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className={`font-bold ${isDarkMode ? "text-slate-200" : "text-slate-900"}`}>{rev.name}</span>
+                  <span className="text-[10px] text-slate-400 font-mono select-all">({rev.email})</span>
+                </div>
+                <div className="flex gap-0.5">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className={`w-3.5 h-3.5 ${i < rev.rating ? "fill-amber-400 text-amber-400" : "text-slate-350 dark:text-slate-650"}`} />
+                  ))}
+                </div>
+                <p className={`text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed italic`}>&ldquo;{rev.feedback}&rdquo;</p>
+                <p className="text-[9px] text-slate-400 font-mono">{rev.date}</p>
+              </div>
+
+              <button
+                onClick={() => handleButtonClickEffect(`btn-delete-rev-${rev.id}`, () => handleRemoveReview(rev.id))}
+                className={`p-1.5 rounded-lg text-slate-400 hover:text-rose-500 self-start transition-all ${
+                  lastClickedButtonId === `btn-delete-rev-${rev.id}`
+                    ? "bg-[#FFA07A] text-slate-950 scale-95 border border-[#FA8072]"
+                    : "hover:bg-slate-200/50"
+                }`}
+                title="Remove Feedback Entry"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </motion.div>
   );
@@ -1605,7 +1729,7 @@ export function ClientPortalLogin({
           <div className="p-4 rounded-xl bg-slate-950 border border-white/5 font-mono text-[10px] space-y-2 text-left">
             <div className="flex items-center justify-between border-b border-white/5 pb-2 text-white font-bold text-2xs uppercase tracking-wider">
               <span>🖥️ PushMasterr Node Connection Logs & Worker Ping Telemetry</span>
-              <span className="text-indigo-405 font-bold animate-pulse">● System Streaming Live</span>
+              <span className="text-indigo-400 font-bold animate-pulse">● System Streaming Live</span>
             </div>
             <div className="space-y-1 text-slate-300">
               <p className="text-emerald-450 font-semibold">[SYSTEM SECURE INFO] Handshake resolved for device identifier webpush_7f394c8b9d09a01fb</p>

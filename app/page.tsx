@@ -963,7 +963,7 @@ class NotificationController extends Controller
                       : "text-slate-600 hover:text-indigo-600 hover:bg-slate-100"
                   }`}
                 >
-                  <Zap className="w-3.5 h-3.5 text-indigo-455 shrink-0" />
+                  <Zap className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
                   <span>SaaS Checkout</span>
                 </button>
 
@@ -1397,15 +1397,15 @@ class NotificationController extends Controller
                       <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">App Publishers Partnered</p>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-2xl font-black text-indigo-600 dark:text-indigo-455 font-mono">1.3 Trillion</p>
+                      <p className="text-2xl font-black text-indigo-600 dark:text-indigo-400 font-mono">1.3 Trillion</p>
                       <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Sent Messages Annually</p>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-2xl font-black text-indigo-600 dark:text-indigo-455 font-mono">1.5 Billion</p>
+                      <p className="text-2xl font-black text-indigo-600 dark:text-indigo-400 font-mono">1.5 Billion</p>
                       <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Active MAU Powered</p>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-2xl font-black text-indigo-600 dark:text-indigo-455 font-mono">200k +</p>
+                      <p className="text-2xl font-black text-indigo-600 dark:text-indigo-400 font-mono">200k +</p>
                       <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Live Sites Running Pushes</p>
                     </div>
                   </div>
@@ -2656,7 +2656,7 @@ class NotificationController extends Controller
                           <span className="text-[8px] bg-emerald-500/10 text-emerald-400 px-1 rounded">DEEP EXT</span>
                         </div>
                         <div className="bg-[#161920]/60 p-2.5 rounded-lg border border-white/5 text-slate-300">
-                          <div className="flex items-center gap-1.5 text-emerald-455 font-bold">
+                          <div className="flex items-center gap-1.5 text-emerald-400 font-bold">
                             <span>✓ SECURE PROTOCOLS VERIFIED</span>
                           </div>
                           <p className="text-[8px] text-slate-500 mt-1">Deep Link redirect scanned: No spam payload detected on target destination host.</p>
@@ -2732,7 +2732,7 @@ class NotificationController extends Controller
                         <div className="space-y-1.5 text-slate-500">
                           <span className="text-[8px] block uppercase text-slate-400">Dispatch Status Queue:</span>
                           <div className="w-full bg-slate-800 h-2 rounded overflow-hidden">
-                            <div className="bg-indigo-505 h-full w-[85%] animate-pulse" />
+                            <div className="bg-indigo-500 h-full w-[85%] animate-pulse" />
                           </div>
                           <div className="flex justify-between text-[7.5px] font-mono text-slate-400 font-semibold">
                             <span>Dispatched: 4,250 / 5,000</span>
@@ -2770,7 +2770,7 @@ class NotificationController extends Controller
                     <Smartphone className="w-4 h-4 text-indigo-600" />
                     Interactive Simulator
                   </h3>
-                  <p className="text-[10px] text-slate-455">Test client notifications in real time</p>
+                  <p className="text-[10px] text-slate-500">Test client notifications in real time</p>
                 </div>
                 
                 <span className="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded font-mono uppercase tracking-widest border border-white/10">
@@ -3217,7 +3217,7 @@ class NotificationController extends Controller
                     <p className="text-[10px] font-extrabold text-white leading-tight">
                       🎥 Play Video Tour: &ldquo;PushMasterr Self-Hosted Edge Nodes&rdquo;
                     </p>
-                    <p className="text-[8px] text-amber-505 font-bold text-amber-400">
+                    <p className="text-[8px] text-amber-400 font-bold">
                       Walkthrough by Raj Sahani
                     </p>
                   </div>

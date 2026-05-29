@@ -430,9 +430,9 @@ export function SuperAdminPanel({
   const [targetPlanId, setTargetPlanId] = useState("pro");
   
   // Local fallbacks for Razorpay settings
-  const [localRzpKeyId, setLocalRzpKeyId] = useState(razorpayKeyId || "rzp_live_PushMaster93850183");
-  const [localRzpSecret, setLocalRzpSecret] = useState(razorpaySecret || "whsec_Secret_PushMaster_9385");
-  const [localRzpIsLive, setLocalRzpIsLive] = useState(razorpayIsLive !== undefined ? razorpayIsLive : true);
+  const [localRzpKeyId, setLocalRzpKeyId] = useState(razorpayKeyId || "rzp_test_Sv6JUzmpW6LOtn");
+  const [localRzpSecret, setLocalRzpSecret] = useState(razorpaySecret || "zzsJTV7bs1m1CIDUZpDds5Ot");
+  const [localRzpIsLive, setLocalRzpIsLive] = useState(razorpayIsLive !== undefined ? razorpayIsLive : false);
 
   const [clients, setClients] = useState<any[]>([
     { email: "contact@pushmasterr.com", tier: "PRO VIP" },

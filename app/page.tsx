@@ -84,9 +84,9 @@ export default function PushNotificationSaaS() {
   const [lastClickedButtonId, setLastClickedButtonId] = useState<string | null>(null);
 
   // Razorpay global state registers
-  const [razorpayKeyId, setRazorpayKeyId] = useState("rzp_live_PushMaster93850183");
-  const [razorpaySecret, setRazorpaySecret] = useState("whsec_Secret_PushMaster_9385");
-  const [razorpayIsLive, setRazorpayIsLive] = useState(true);
+  const [razorpayKeyId, setRazorpayKeyId] = useState("rzp_test_Sv6JUzmpW6LOtn");
+  const [razorpaySecret, setRazorpaySecret] = useState("zzsJTV7bs1m1CIDUZpDds5Ot");
+  const [razorpayIsLive, setRazorpayIsLive] = useState(false);
 
   // Link safety anti-spam crawler registers
   const [spamStatus, setSpamStatus] = useState<"clean" | "checking" | "spam_detected" | "idle">("clean");
